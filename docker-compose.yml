@@ -1,0 +1,21 @@
+version: "3.9"
+
+networks:
+    net:
+        driver: bridge
+
+services:
+    postgres:
+        image: postgis/postgis
+        environment:
+            POSTGRES_DB: "AlignTest"
+            POSTGRES_USER: "AlignTest"
+            POSTGRES_PASSWORD: "Align-password"
+        ports:
+            - "5432:5432"
+        networks:
+            - net
+        volumes:
+            - postgres-volume:/var/lib/postgresql/data
+volumes:
+    postgres-volume:
